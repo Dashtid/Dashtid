@@ -29,8 +29,6 @@ and back them with SBOM-driven SCA, static analysis, and DICOM fuzzing.
 ## Featured projects
 
 <!-- Pin these on your profile: Profile -> "Customize your pins". -->
-- [jobhunt](https://github.com/Dashtid/jobhunt) - shortlist Swedish security jobs from the
-  open JobTech (Platsbanken) API; filter, dedupe, and rank to Markdown. Python, tests, CI.
 - dicom-privacy-guard - CLI that de-identifies DICOM files by stripping PHI tags (private
   until launch).
 - (more security tooling coming - DICOM fuzzer, Docker/SBOM scanner)
