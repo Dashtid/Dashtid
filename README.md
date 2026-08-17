@@ -28,15 +28,21 @@ and back them with SBOM-driven SCA, static analysis, and DICOM fuzzing.
 
 ## Featured projects
 
-<!-- Pin these on your profile: Profile -> "Customize your pins". -->
-- dicom-privacy-guard - CLI that de-identifies DICOM files by stripping PHI tags (private
-  until launch).
-- (more security tooling coming - DICOM fuzzer, Docker/SBOM scanner)
+- [subvectors](https://github.com/Dashtid/subvectors) - cited, versioned conformance
+  vectors for CI/CD OIDC trust decisions: does subject S satisfy trust condition C,
+  and is C safe? Covers GitHub/GitLab issuers against AWS/Azure/GCP consumers.
+- [subcheck](https://github.com/Dashtid/subcheck) - decodes and validates GitHub Actions
+  OIDC token claims against an expected-claims policy. A CI gate against trust-policy
+  drift; consumes the subvectors fixtures.
+- [portfolio-site](https://github.com/Dashtid/portfolio-site) - full-stack personal site
+  (Vue 3 + TypeScript, FastAPI) with GitHub OAuth, analytics and an admin CMS.
+- [sysadmin-toolkit](https://github.com/Dashtid/sysadmin-toolkit) - Windows/Linux
+  administration automation: maintenance, infrastructure setup, monitoring, DevOps.
 
 ## Competitions and open source
 
-<!-- Keep this tight: link each entry to a repo or write-up. Quality over quantity. -->
-- CTFs - write-ups in `ctf-writeups` (see CTFtime profile).
+- Upstream pull requests to security tooling - Syft, Grype, Checkov, Cartography,
+  DefectDojo, Dependency-Track, Presidio, pydicom and fo-dicom.
 - Hacktoberfest - open-source pull requests (October).
 - TMC Global Threat Modeling Hackathon - threat-modeling competition.
 
@@ -44,10 +50,3 @@ and back them with SBOM-driven SCA, static analysis, and DICOM fuzzing.
 
 - CompTIA Security+ (2026)
 - CompTIA Pentest+ (in progress)
-
-<!--
-Profile setup notes (delete once done):
-- This repo must be named exactly "Dashtid" (same as the username) so it renders on your profile.
-- After pushing, go to your profile -> "Customize your pins" -> pin your best repos.
-- Optional: add a Holopin badge board embed here once you have badges. Keep it small.
--->
