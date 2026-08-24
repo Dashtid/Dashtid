@@ -2,10 +2,10 @@
 
 Product security for regulated medical software. Biomedical engineer turned security
 specialist - I turn STRIDE threat models into concrete, traceable security requirements
-and back them with SBOM-driven SCA, static analysis, and DICOM fuzzing.
+and back them with SBOM-driven SCA, static analysis, and black-box dynamic testing.
 
 - Currently: QA/RA & Security Specialist at Hermes Medical Solutions (Stockholm).
-- Focus: secure SDLC for medical devices, DICOM/PACS, FDA premarket cybersecurity and
+- Focus: secure SDLC for medical devices, FDA premarket cybersecurity and
   IEC 81001-5-1, AppSec, and the AI governance that increasingly wraps around it.
 - Building toward: Product / Application Security Engineering.
 - Web: [dashti.se](https://dashti.se) - LinkedIn: [david-dashti](https://www.linkedin.com/in/david-dashti/)
@@ -14,7 +14,7 @@ and back them with SBOM-driven SCA, static analysis, and DICOM fuzzing.
 
 - Threat modeling (STRIDE) into product-specific, traceable security requirements
 - SBOM (SOUP-based) and SCA / vulnerability triage (Grype)
-- Static analysis enablement and fuzzing / dynamic security testing for DICOM
+- Static analysis enablement and black-box dynamic security testing
 - Translating FDA premarket cybersecurity guidance and IEC 81001-5-1 into evidence
 
 ## Tech
@@ -49,4 +49,3 @@ and back them with SBOM-driven SCA, static analysis, and DICOM fuzzing.
 ## Certifications
 
 - CompTIA Security+ (2026)
-- CompTIA Pentest+ (in progress)
