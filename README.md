@@ -31,9 +31,11 @@ and back them with SBOM-driven SCA, static analysis, and black-box dynamic testi
 - [subvectors](https://github.com/Dashtid/subvectors) - cited, versioned conformance
   vectors for CI/CD OIDC trust decisions: does subject S satisfy trust condition C,
   and is C safe? Covers GitHub/GitLab issuers against AWS/Azure/GCP consumers.
+  On PyPI (`pip install subvectors`) with the full corpus in the wheel.
 - [subcheck](https://github.com/Dashtid/subcheck) - decodes and validates GitHub Actions
   OIDC token claims against an expected-claims policy. A CI gate against trust-policy
-  drift; consumes the subvectors fixtures.
+  drift, differentially tested against the pinned subvectors corpus. On PyPI
+  (`pip install subcheck`) and usable as a GitHub Action.
 - [portfolio-site](https://github.com/Dashtid/portfolio-site) - full-stack personal site
   (Vue 3 + TypeScript, FastAPI) with GitHub OAuth, analytics and an admin CMS.
 - [sysadmin-toolkit](https://github.com/Dashtid/sysadmin-toolkit) - Windows/Linux
