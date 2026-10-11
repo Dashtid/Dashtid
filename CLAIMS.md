@@ -7,6 +7,10 @@ All rows verified **2026-09-14** against the README as it stands after that day'
 **re-run 2026-09-19 before the first commit** - which caught one change already: purl2cpe #32
 merged on 2026-09-15, so the headline moved from 14/7 to 15/8 and its row moved from the open-PR
 sentence into the table. Five days was enough for the page to drift. Re-run before every edit.
+
+**2026-10-11:** sysadmin-toolkit was removed from the page. Only the own-repo row was re-run that
+day; every line reference was re-checked against the edited README, and the ones that had drifted
+by a line were corrected. All other results still date from 2026-09-14 / 2026-09-19.
 Commands are `gh` / `curl` as shown; `gh` runs as the authenticated user `Dashtid`
 (`gh api user --jq .login` -> `Dashtid`).
 
@@ -16,7 +20,7 @@ Re-verify after any edit to the page, and after any upstream PR merges or closes
 
 The global form (`gh search prs --author Dashtid --merged`) caps its result set and
 undercounts. Every count below comes from a search **scoped to one repository**, and the
-headline on line 16 is the sum of those seven numbers - not a separately measured figure.
+headline on line 16 is the sum of those eight numbers - not a separately measured figure.
 
 ## Ledger
 
@@ -40,21 +44,20 @@ headline on line 16 is the sum of those seven numbers - not a separately measure
 | 32 | Open PRs at pydicom | `gh search prs --author Dashtid --repo pydicom/pydicom --json number,title,state,url --limit 50` | 4 open: #2346, #2337, #2333, #2331 (charset and malformed-dataset error handling) - CONFIRMED |
 | 33 | Open PRs at cartography | `gh search prs --author Dashtid --repo cartography-cncf/cartography --json number,title,state,url --limit 50` | 1 open: #3088 "feat(aws): model trust-policy conditions on the role trust edge" - CONFIRMED |
 | 20-34 | All eleven linked upstream repositories exist and are not archived | `gh api repos/<owner>/<repo> --jq '.full_name + " archived=" + (.archived\|tostring)'` for each of the 11 | all 11 resolved, `archived=false` for every one - CONFIRMED |
-| 36 | "All of my pull requests" search link | `https://github.com/pulls?q=is%3Apr+author%3ADashtid+archived%3Afalse` - the author handle checked with `gh api user --jq .login` | handle `Dashtid` matches the query - CONFIRMED as a well-formed link. It is a live GitHub search, so it returns whatever GitHub returns at click time and asserts no number. |
-| 39, 43, 47, 49 | The four linked own-repos exist and are public | `gh repo view Dashtid/<repo> --json nameWithOwner,visibility,isArchived` for subvectors, subcheck, portfolio-site, sysadmin-toolkit | all four `PUBLIC`, `isArchived: false` - CONFIRMED |
-| 42 | subvectors covers GitHub/GitLab issuers against AWS/Azure/GCP consumers | Wheel contents, listed below | `github-aws`, `github-azure`, `github-azure-flexible`, `github-gcp`, `gitlab-aws`, `gitlab-azure`, `gitlab-azure-flexible`, `gitlab-gcp` all present - CONFIRMED. [i] The corpus also carries bitbucket, circleci and terraform suites, so the page understates it. |
-| 43 | subvectors is on PyPI and the wheel carries the full corpus | `curl -s -o /dev/null -w "%{http_code}" https://pypi.org/pypi/subvectors/json`; then download the `.whl` from the same JSON and `python -c "import zipfile; print(zipfile.ZipFile('sv.whl').namelist())"` | PyPI `200`, version `0.6.0`; wheel holds 14 vector JSON suites plus `vectors/schema/vector-suite.schema.json` and `vectors/LICENSE` under `subvectors/vectors/` - CONFIRMED |
-| 46 | subcheck is differentially tested against the pinned subvectors corpus | `gh api repos/Dashtid/subcheck/contents/tests --jq '.[].name'` | `test_decoder_vectors.py`, `test_fixture_provenance.py`, `test_docs_pins.py` present among 15 test modules - PARTIAL: the tests that would implement this exist by name; the suite was not executed in this pass, so the wording is supported, not proven |
-| 47 | subcheck is on PyPI and usable as a GitHub Action | `curl -s -o /dev/null -w "%{http_code}" https://pypi.org/pypi/subcheck/json`; `gh api repos/Dashtid/subcheck/contents/action.yml --jq '.name,.size'` | PyPI `200`, version `0.5.0`; `action.yml` present at the repo root (2086 bytes) - CONFIRMED |
-| 48-49 | portfolio-site: Vue 3 + TypeScript frontend, FastAPI backend | `gh api repos/Dashtid/portfolio-site/languages`; `gh api repos/Dashtid/portfolio-site/contents --jq '.[].name'`; `gh api repos/Dashtid/portfolio-site/contents/backend/requirements.txt` | languages include `Vue`, `TypeScript`, `Python`; `frontend/` and `backend/` directories present; `fastapi` in the compiled backend requirements - CONFIRMED |
-| 48-49 | portfolio-site: GitHub OAuth, analytics, admin CMS | `gh api repos/Dashtid/portfolio-site/contents/backend/app --jq '.[].name'`; backend requirements | indicative only - `githubkit` (a GitHub API client) is a backend dependency and `api/`, `services/`, `models/` exist. PARTIAL: the three features were not individually confirmed in this pass |
-| 50-51 | sysadmin-toolkit: Windows/Linux administration automation | `gh api repos/Dashtid/sysadmin-toolkit/contents --jq '.[].name'` | top-level `Windows/` and `Linux/` directories present - CONFIRMED |
-| 55 | CompTIA Security+ (2026) | No verification URL or credential code appears on the page, and CompTIA verification requires a candidate-issued link or code. | NOT VERIFIABLE FROM THE PAGE. A reader cannot check it by clicking. To make it checkable, add the CompTIA/Credly credential URL to the line. |
+| 35 | "All of my pull requests" search link | `https://github.com/pulls?q=is%3Apr+author%3ADashtid+archived%3Afalse` - the author handle checked with `gh api user --jq .login` | handle `Dashtid` matches the query - CONFIRMED as a well-formed link. It is a live GitHub search, so it returns whatever GitHub returns at click time and asserts no number. |
+| 39, 43, 47 | The three linked own-repos exist and are public | `gh repo view Dashtid/<repo> --json nameWithOwner,visibility,isArchived` for subvectors, subcheck, portfolio-site | all three `PUBLIC` - CONFIRMED 2026-10-11. `isArchived: false` for subcheck and portfolio-site; `true` for subvectors, which was archived on 2026-10-11 (still public and readable) |
+| 41 | subvectors covers GitHub/GitLab issuers against AWS/Azure/GCP consumers | Wheel contents, listed below | `github-aws`, `github-azure`, `github-azure-flexible`, `github-gcp`, `gitlab-aws`, `gitlab-azure`, `gitlab-azure-flexible`, `gitlab-gcp` all present - CONFIRMED. [i] The corpus also carries bitbucket, circleci and terraform suites, so the page understates it. |
+| 42 | subvectors is on PyPI and the wheel carries the full corpus | `curl -s -o /dev/null -w "%{http_code}" https://pypi.org/pypi/subvectors/json`; then download the `.whl` from the same JSON and `python -c "import zipfile; print(zipfile.ZipFile('sv.whl').namelist())"` | PyPI `200`, version `0.6.0`; wheel holds 14 vector JSON suites plus `vectors/schema/vector-suite.schema.json` and `vectors/LICENSE` under `subvectors/vectors/` - CONFIRMED |
+| 45 | subcheck is differentially tested against the pinned subvectors corpus | `gh api repos/Dashtid/subcheck/contents/tests --jq '.[].name'` | `test_decoder_vectors.py`, `test_fixture_provenance.py`, `test_docs_pins.py` present among 15 test modules - PARTIAL: the tests that would implement this exist by name; the suite was not executed in this pass, so the wording is supported, not proven |
+| 46 | subcheck is on PyPI and usable as a GitHub Action | `curl -s -o /dev/null -w "%{http_code}" https://pypi.org/pypi/subcheck/json`; `gh api repos/Dashtid/subcheck/contents/action.yml --jq '.name,.size'` | PyPI `200`, version `0.5.0`; `action.yml` present at the repo root (2086 bytes) - CONFIRMED |
+| 47-48 | portfolio-site: Vue 3 + TypeScript frontend, FastAPI backend | `gh api repos/Dashtid/portfolio-site/languages`; `gh api repos/Dashtid/portfolio-site/contents --jq '.[].name'`; `gh api repos/Dashtid/portfolio-site/contents/backend/requirements.txt` | languages include `Vue`, `TypeScript`, `Python`; `frontend/` and `backend/` directories present; `fastapi` in the compiled backend requirements - CONFIRMED |
+| 48 | portfolio-site: GitHub OAuth, analytics, admin CMS | `gh api repos/Dashtid/portfolio-site/contents/backend/app --jq '.[].name'`; backend requirements | indicative only - `githubkit` (a GitHub API client) is a backend dependency and `api/`, `services/`, `models/` exist. PARTIAL: the three features were not individually confirmed in this pass |
+| 52 | CompTIA Security+ (2026) | No verification URL or credential code appears on the page, and CompTIA verification requires a candidate-issued link or code. | NOT VERIFIABLE FROM THE PAGE. A reader cannot check it by clicking. To make it checkable, add the CompTIA/Credly credential URL to the line. |
 
 ## Known gaps
 
-- The certification line (55) is the one claim on the page a reader cannot check at all.
+- The certification line (52) is the one claim on the page a reader cannot check at all.
 - The LinkedIn link (12) cannot be checked from a terminal; it needs a browser.
-- Two rows are PARTIAL rather than confirmed: subcheck's differential testing (46) and
-  portfolio-site's feature list (48-49).
+- Two rows are PARTIAL rather than confirmed: subcheck's differential testing (45) and
+  portfolio-site's feature list (48).
 - Line 7 is excluded from this ledger by owner decision, not by oversight.

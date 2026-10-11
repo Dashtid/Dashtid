@@ -46,8 +46,6 @@ trust-policy checks at [checkov](https://github.com/bridgecrewio/checkov), plus
   On PyPI (`pip install subcheck`) and usable as a GitHub Action.
 - [portfolio-site](https://github.com/Dashtid/portfolio-site) - full-stack personal site
   (Vue 3 + TypeScript, FastAPI) with GitHub OAuth, analytics and an admin CMS.
-- [sysadmin-toolkit](https://github.com/Dashtid/sysadmin-toolkit) - Windows/Linux
-  administration automation: maintenance, infrastructure setup, monitoring, DevOps.
 
 ## Certifications
 
