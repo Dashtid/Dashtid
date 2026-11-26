@@ -1,7 +1,7 @@
-# Generated from estate/standards/dependabot.yml - edit it THERE, then re-run
-# `python standards/rollout.py --apply`.
+# Generated from the shared standard (standards/dependabot.yml) - edit it
+# THERE, then re-run `python standards/rollout.py --apply`.
 #
-# WHY THIS EXISTS. Every workflow in this estate pins its actions to a full
+# WHY THIS EXISTS. Every workflow under this standard pins its actions to a full
 # commit SHA, so a moved tag on a compromised action changes nothing here. That
 # safety is bought on credit: a SHA never updates itself. Eight repositories
 # were carrying the pins with nothing that moved them, which is the worse half
@@ -44,7 +44,7 @@ updates:
         # major is a real change (checkout v4 -> v5 moved the Node runtime) and
         # deserves its own red or green.
         #
-        # [i] This shape is PROVEN to group in this estate, and the proof
+        # [i] This shape is PROVEN to group under this standard, and the proof
         # matters because the obvious reading of the upstream bug reports says
         # otherwise. One repository here ran exactly this - patterns plus
         # update-types - from 2025-12 and grouped correctly every time (one
